@@ -52,6 +52,5 @@ public class JulyTwentyEight {
     }
 
     public static void main(String[] args) {
-        System.out.println(buddyStrings);
     }
 }
