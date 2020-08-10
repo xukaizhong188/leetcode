@@ -52,8 +52,6 @@ public class AugustTen {
                 }
                 tar = j;
             }
-
-
         }
         return numbs;
     }
