@@ -8,3 +8,6 @@ likou.August.AugustTen
 likou.August.AugustTen
 ### 3、希尔排序
 likou.August.AugustEleven
+### 4、归并排序
+likou.August.AugustTwelve
+likou.August.AugustThirteen
