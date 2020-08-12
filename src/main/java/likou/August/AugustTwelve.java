@@ -6,7 +6,7 @@ package likou.August;
  * @author xukaizhong
  * @date 2018/07/01
  */
-public class AugustThirteen {
+public class AugustTwelve {
     private static int[]  numb2;
     /**
      * 原地归并方法（在不使用额外的空间的情况下将numb进行排序）
@@ -54,10 +54,7 @@ public class AugustThirteen {
         int mid = lo+(hi - lo) / 2;
         sort(numb,lo,mid);//对左半边进行排序
         sort(numb,mid+1,hi);//对右半边进行排序
-        //思考2改进：如果num[mid] <= num[mid+1]跳过merge
-        if (numb[mid] > numb[mid+1]){
-            merge(numb,lo,mid,hi);//原地归并处理
-        }
+        merge(numb,lo,mid,hi);//原地归并处理
     }
 
 
