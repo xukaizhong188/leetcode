@@ -58,10 +58,19 @@ public class AugustTen {
 
 
     public static void main(String[] args) {
-        int[] a = sort2(new int[]{1,3,2,54,53,1,342,35,675,89,9,23});
-
-        for (int i = 0;i<a.length;i++){
-            System.out.println(a[i]);
+        int[] numb =  new int[100];
+        for (int i = 0;i<numb.length;i++){
+            numb[i] = (int) (Math.random()*(100));
+        }
+        for (int i = 0;i<numb.length;i++){
+            System.out.println(numb[i]);
+        }
+        System.out.println("----------------------------");
+        //sort(numb,0,numb.length - 1);
+        //Ñ¡ÔñÅÅÐò
+        sort2(numb);
+        for (int i = 0;i<numb.length;i++){
+            System.out.println(numb[i]);
         }
     }
 }

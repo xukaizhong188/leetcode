@@ -99,12 +99,17 @@ public class AugustEleven {
 
 
     public static void main(String[] args) {
-        //int[] a = sort(new int[]{1,3,2,54,53,1,342,35,675,89,9,23});
-        //int[] a = sort(new int[]{1,6,2,5,4,3});
-        int[] numb =  new int[]{1,3,5,2,4,6};
-        numb2 = new int[numb.length];
-        //int[] a = merge(new int[]{1,3,5,2,4,6},0,2,5);
-        sort(numb,0,numb.length - 1);
+        int[] numb =  new int[100];
+        for (int i = 0;i<numb.length;i++){
+            numb[i] = (int) (Math.random()*(100));
+        }
+        for (int i = 0;i<numb.length;i++){
+            System.out.println(numb[i]);
+        }
+        System.out.println("----------------------------");
+        //sort(numb,0,numb.length - 1);
+        //Ñ¡ÔñÅÅĞò
+        sort(numb);
         for (int i = 0;i<numb.length;i++){
             System.out.println(numb[i]);
         }
