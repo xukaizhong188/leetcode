@@ -51,6 +51,11 @@ public class AugustThirteen {
         if (hi <= lo){
             return ;
         }
+        //思考1改进：判断数组长度小于8时直接采用选择排序返回
+        if (numb.length <= 8){//此处可以根据实际效率情况进行重新定义值
+            sort(numb);
+            return;
+        }
         int mid = lo+(hi - lo) / 2;
         sort(numb,lo,mid);//对左半边进行排序
         sort(numb,mid+1,hi);//对右半边进行排序
@@ -62,10 +67,33 @@ public class AugustThirteen {
 
 
 
+
+    /**
+     * 选择排序
+     * @param numbs
+     * @return
+     */
+    private static void sort(int[] numbs) {
+        for (int i = 0;i<numbs.length;i++){
+            int min =i;
+            //比较大小，找到最小值
+            for (int j = i+1 ;j<numbs.length;j++){
+
+                if (numbs[min] >= numbs[j]){
+                    min = j;
+                }
+            }
+            //将最小值min和当前位置进行交换
+            int tem = numbs[i];
+            numbs[i] = numbs[min];
+            numbs[min] = tem;
+
+        }
+    }
     public static void main(String[] args) {
-        int[] numb =  new int[100];
+        int[] numb =  new int[1000];
         for (int i = 0;i<numb.length;i++){
-            numb[i] = (int) (Math.random()*(100));
+            numb[i] = (int) (Math.random()*(1000));
         }
         for (int i = 0;i<numb.length;i++){
             System.out.println(numb[i]);
@@ -73,6 +101,8 @@ public class AugustThirteen {
         System.out.println("----------------------------");
         numb2 = new int[numb.length];
         sort(numb,0,numb.length - 1);
+        //选择排序
+        //sort(numb);
         for (int i = 0;i<numb.length;i++){
             System.out.println(numb[i]);
         }
