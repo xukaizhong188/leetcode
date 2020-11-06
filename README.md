@@ -11,3 +11,5 @@ likou.August.AugustEleven
 ### 4、归并排序
 likou.August.AugustTwelve
 likou.August.AugustThirteen
+### 5、快速排序
+likou.August.AugustServerteen
