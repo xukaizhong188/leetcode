@@ -66,7 +66,7 @@ public class Tree {
     /**
      * 清空二叉树
      */
-    private void clera(){
+    private void clear(){
         if (null == rootTreeNode){
             return;
         }
