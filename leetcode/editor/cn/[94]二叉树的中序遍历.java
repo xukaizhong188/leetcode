@@ -40,7 +40,27 @@
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        find(root,result);
+        return result;
+    }
 
+    private void find(TreeNode treeNode,List<Integer> result){
+        if (null == treeNode){
+            return;
+        }
+        find(treeNode.left,result);
+        result.add(treeNode.val);
+        find(treeNode.right,result);
+    }
+}
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int x) {
+        val = x;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
