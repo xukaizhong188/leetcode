@@ -1,5 +1,9 @@
 package xukaizhong.arithmetic.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * @author xukaizhong
  * @date 2021/3/2111:38 上午
@@ -172,6 +176,26 @@ public class Tree {
         op(treeNode);
         insertLeftTreeNode(treeNode.getLeftNode());
         insertLeftTreeNode(treeNode.getRightNode());
+    }
+
+    /**
+     * 前序遍历迭代方法
+     * @param treeNode
+     */
+    public List<Integer> preorderTraversal(TreeNode treeNode) {
+        List<Integer> preOrderList = new ArrayList<Integer>(); //存放访问顺序
+        Stack<TreeNode> stack = new Stack<TreeNode>();  //存放结点，用于回溯
+        while(treeNode != null || !stack.empty()) {     //迭代遍历二叉树
+            while(treeNode != null) {   //使root指向当前子二叉树的最左结点
+                stack.push(treeNode);
+                preOrderList.add(treeNode.getValue()); //将当前子二叉树的根节点入栈，并访问
+                treeNode = treeNode.getLeftNode();
+            }
+            while(treeNode == null && !stack.empty()) {
+                treeNode = stack.pop().getRightNode();   //自底向上找到栈中跟结点第一个非空右孩子
+            }
+        }
+        return preOrderList;
     }
 
     /**
