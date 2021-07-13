@@ -28,6 +28,11 @@
  * }
 */
 class Solution {
+    /**
+     * 递归
+     * @param head
+     * @return
+     */
     public ListNode reverseList(ListNode head) {
         if(head == null || head.next == null){
             return head;
@@ -37,6 +42,26 @@ class Solution {
         head.next = null;
         return listNode;
 
+    }
+
+    /**
+     * 迭代
+     * @param head
+     * @return
+     */
+    public ListNode reverse(ListNode head){
+        ListNode pre = null;
+        ListNode cur = head;
+        ListNode nxt = head;
+        while (cur != null){
+
+            net = cur.next;
+            cur.next = pre;
+
+            pre = cur;
+            cur = net;
+        }
+        return pre;
     }
 }
 
