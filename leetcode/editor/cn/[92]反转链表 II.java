@@ -27,8 +27,29 @@
  * }
  */
 class Solution {
+    ListNode houquNode;
     public ListNode reverseBetween(ListNode head, int left, int right) {
-
+        if (left == 1){
+            return reverseN(head,right);
+        }
+        head.next = reverseBetween(head.next,left-1,right-1);
+        return head;
+    }
+    /**
+     * 反转前n个节点
+     * @param head
+     * @param n
+     * @return
+     */
+    public ListNode reverseN(ListNode head,int n){
+        if (n == 1 ){
+            houquNode = head.next;
+            return head;
+        }
+        ListNode listNode = reverseN(head.next,n-1);
+        head.next.next = head;
+        head.next = houquNode;
+        return listNode;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
