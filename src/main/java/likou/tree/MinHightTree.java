@@ -20,6 +20,7 @@ public class MinHightTree {
         }
         //将中间节点作为根节点
         TreeNode mNode = new TreeNode(nums[nums.length/2]);
+        return null;
     }
 }
 class TreeNode {
