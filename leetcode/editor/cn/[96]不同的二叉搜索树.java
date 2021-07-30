@@ -16,7 +16,33 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    int[][] beiwanglu;
     public int numTrees(int n) {
+        beiwanglu = new int[n+1][n+1];
+        return count(1,n);
+    }
+
+    /**
+     * 计算low到hight共有的情况
+     * @param low
+     * @param hight
+     * @return
+     */
+    public int count(int low,int hight){
+        if (low > hight){
+            return 1;
+        }
+        if (beiwanglu[low][hight] != 0){
+            return beiwanglu[low][hight];
+        }
+        int result = 0 ;
+        for (int i = low ;i <= hight ;i++){
+            int leftCount = count(low,i-1);
+            int rightCount = count(i+1,hight);
+            result = result + leftCount*rightCount;
+        }
+        beiwanglu[low][hight] = result;
+        return result;
 
     }
 }
