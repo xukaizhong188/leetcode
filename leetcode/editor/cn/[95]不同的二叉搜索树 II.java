@@ -43,17 +43,46 @@
  * }
  */
 class Solution {
+
+
     public List<TreeNode> generateTrees(int n) {
+        if (n == 0){
+            return new ArrayList();
+        }
+        return count(1,n);
+    }
+
+    /**
+     * 计算low到hight共有的情况
+     * @param low
+     * @param hight
+     * @return
+     */
+    public List<TreeNode> count(int low,int hight){
+        List<TreeNode> res = new ArrayList();
+        if (low > hight){
+            res.add(null);
+            return res;
+        }
+
+        for (int i = low ;i <= hight ;i++){
+            //左子树的list
+            List<TreeNode> leftList = count(low,i-1);
+            //右子树的list
+            List<TreeNode> rightList = count(i+1,hight);
+            //穷举以i为根节点的符合条件的二叉搜索树
+            for (TreeNode leftNode:leftList){
+                for (TreeNode rightNode:rightList){
+                    TreeNode node = new TreeNode(i);
+                    node.right = rightNode;
+                    node.left = leftNode;
+                    res.add(node);
+                }
+            }
+        }
+        return res;
 
     }
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) {
-        val = x;
-    }
-}
 //leetcode submit region end(Prohibit modification and deletion)
