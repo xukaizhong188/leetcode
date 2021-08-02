@@ -94,9 +94,8 @@ class Solution {
         getMax(root.right);
         //判断自己是否为BST
         if (isBST(root,null,null)){
-            //如果是二叉搜索树则进行自身最大值的求和
+            //如果是二叉搜索树则进行自身求和
             int num = find(root);
-            //遍历自身求和
             if (num >= result){
                 result = num;
             }
