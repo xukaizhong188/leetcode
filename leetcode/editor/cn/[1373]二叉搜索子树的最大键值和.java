@@ -90,8 +90,7 @@ class Solution {
         if (root == null){
             return ;
         }
-        getMax(root.left);
-        getMax(root.right);
+
         //判断自己是否为BST
         if (isBST(root,null,null)){
             //如果是二叉搜索树则进行自身求和
@@ -100,6 +99,8 @@ class Solution {
                 result = num;
             }
         }
+        getMax(root.left);
+        getMax(root.right);
     }
     /**
      * 求节点和
@@ -115,7 +116,7 @@ class Solution {
         return sum;
     }
     /**
-     * 校验一个树是否为二叉搜索树并返回此树节点和
+     * 校验一个树是否为二叉搜索树
      * @param root
      * @param min
      * @param max
@@ -133,14 +134,6 @@ class Solution {
         }
 
         return isBST(root.left,min,root) && isBST(root.right,root,max);
-    }
-
-    public int isBST(TreeNode root,TreeNode min,TreeNode max){
-
-        int result = 0;
-        if (isBST(root,null,null)){
-
-        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
