@@ -82,6 +82,7 @@
  */
 class Solution {
     int result = 0;
+    Map<TreeNode,Integer> nodeMap = new HashMap();
     public int maxSumBST(TreeNode root) {
         getMax(root);
         return result;
@@ -90,30 +91,21 @@ class Solution {
         if (root == null){
             return ;
         }
-
+        Integer rootSum = null;
+        if (nodeMap.get(root) != null){
+            rootSum = nodeMap.get(root);
+        }else {
+            rootSum = isBST(root,null,null);
+        }
         //判断自己是否为BST
-        if (isBST(root,null,null)){
-            //如果是二叉搜索树则进行自身求和
-            int num = find(root);
-            if (num >= result){
-                result = num;
+        //Integer rootSum = isBST(root,null,null);
+        if (rootSum != null ){
+            if (rootSum >= result){
+                result = rootSum;
             }
         }
         getMax(root.left);
         getMax(root.right);
-    }
-    /**
-     * 求节点和
-     * @param root
-     * @return
-     */
-    public int find(TreeNode root){
-        int sum = 0;
-        if (root == null){
-            return 0;
-        }
-        sum = root.val + find(root.right) +find(root.left);
-        return sum;
     }
     /**
      * 校验一个树是否为二叉搜索树
@@ -122,18 +114,27 @@ class Solution {
      * @param max
      * @return
      */
-    public boolean isBST(TreeNode root,TreeNode min,TreeNode max){
+
+    public Integer isBST(TreeNode root,TreeNode min,TreeNode max){
+        int sum = 0;
         if (root == null){
-            return true;
+            return 0;
         }
         if (min != null && root.val <= min.val){
-            return false;
+            return null;
         }
         if (max != null && root.val >= max.val){
-            return false;
+            return null;
         }
-
-        return isBST(root.left,min,root) && isBST(root.right,root,max);
+        Integer left = isBST(root.left,min,root);
+        Integer right = isBST(root.right,root,max);
+        if (left == null || right == null){
+            return null;
+        }
+        sum =  root.val + left +right;
+        nodeMap.put(root,sum);
+        return sum;
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
